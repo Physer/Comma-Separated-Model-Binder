@@ -2,19 +2,27 @@
 
 namespace CSMB.Sandbox.Framework
 {
-    [Route("api/values")]
+    [RoutePrefix("api/values")]
     public class ValuesController : ApiController
     {
         [HttpGet]
-        [Route("")]
-        public IHttpActionResult GetAll()
-        {
-            return Json(new int[] { 1, 2, 3, 4, 5 });
-        }
-
-        public IHttpActionResult Get(int[] values)
+        [Route("list")]
+        public IHttpActionResult List([FromUri] int[] values)
         {
             return Json(values);
         }
+
+        [HttpGet]
+        public IHttpActionResult Get([FromUri] int value)
+        {
+            return Json(value);
+        }
+
+        [HttpGet]
+        public IHttpActionResult Default()
+        {
+            return Json("Values API");
+        }
+
     }
 }

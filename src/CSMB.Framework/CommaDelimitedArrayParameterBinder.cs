@@ -30,7 +30,7 @@ namespace Valtech.AWP.Action.Site.Infrastructure.WebApi
                 var queryString = actionContext.Request.GetQueryNameValuePairs().ToDictionary(x => x.Key, x => x.Value);
                 foreach(var value in queryString.Values)
                 {
-                        var splitString = value.Split(',').ToArray();
+                        var splitString = value.Split(',').Select(item => int.Parse(item)).ToArray();
                         if (splitString != null && splitString.Any())
                             SetValue(actionContext, splitString);
 

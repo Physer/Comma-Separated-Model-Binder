@@ -1,6 +1,6 @@
 ﻿using System.Web.Http;
 
-namespace Temp
+namespace CSMB.Sandbox.Framework
 {
     public static class WebApiConfig
     {

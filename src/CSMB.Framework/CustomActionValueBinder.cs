@@ -9,7 +9,7 @@ namespace Valtech.AWP.Action.Site.Infrastructure.WebApi
     {
         public new HttpActionBinding GetBinding(HttpActionDescriptor actionDescriptor)
         {
-            if (actionDescriptor.GetParameters().Any(p => p.ParameterName.Equals("codes", StringComparison
+            if (actionDescriptor.GetParameters().Any(p => p.ParameterName.Equals("values", StringComparison
                  .InvariantCultureIgnoreCase)))
             {
                 var bindings = Array.ConvertAll(actionDescriptor.GetParameters().ToArray(), new Converter<HttpParameterDescriptor, HttpParameterBinding>(GetCustomParameterBinding));
@@ -23,7 +23,7 @@ namespace Valtech.AWP.Action.Site.Infrastructure.WebApi
 
         protected HttpParameterBinding GetCustomParameterBinding(HttpParameterDescriptor parameter)
         {
-            if (parameter.ParameterType.Equals(typeof(string[])))
+            if (parameter.ParameterType.Equals(typeof(int[])))
                 return new CommaDelimitedArrayParameterBinder(parameter);
 
 
